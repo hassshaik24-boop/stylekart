@@ -1,5 +1,11 @@
+require("dotenv").config();
 const app=require("./app");
+const connectDB=require("./backend/src/config/db")
 const PORT=process.env.PORT||5000;
-app.listen(PORT,()=>{
+async function start(){
+  await  connectDB();
+  app.listen(PORT,()=>{
     console.log(`server is running in ${PORT}`)
 });
+}
+start();
